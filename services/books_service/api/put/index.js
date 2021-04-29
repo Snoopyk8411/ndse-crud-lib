@@ -1,11 +1,10 @@
 const {
     TARGET_BOOK_URL,
-    NOT_FOUND_CODE,
-    NOT_FOUND_MESSAGE,
 } = require('../constants');
+const { handleNotFound } = require('../utils');
 
-const initPutAPI = (serverApp, booksDB) => {
-    serverApp.put(TARGET_BOOK_URL, (req, res) => {
+const addPutAPI = ({ booksAPIRouter }, {}, booksDB) => {
+    booksAPIRouter.put(TARGET_BOOK_URL, (req, res) => {
         const bookData = req.body;
         const { id } = req.params;
 
@@ -15,12 +14,11 @@ const initPutAPI = (serverApp, booksDB) => {
             const updatedBookRecord = booksDB.updateRecord(id, bookData);
             res.json(updatedBookRecord);
         } else {
-            res.status(NOT_FOUND_CODE);
-            res.json(NOT_FOUND_MESSAGE);
+            handleNotFound(res);
         }
     });
 };
 
 module.exports = {
-    initPutAPI,
+    addPutAPI,
 };

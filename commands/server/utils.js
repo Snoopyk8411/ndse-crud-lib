@@ -1,9 +1,9 @@
 const { logger, SILENT } = require('../../utils/logger');
-const { initBooksServer } = require('../../middlewares/books_middleware');
+const { initBooksService } = require('../../services/books_service');
 
 
 module.exports = {
     logger,
     SILENT,
-    initBooksServer,
+    initBooksService,
 };

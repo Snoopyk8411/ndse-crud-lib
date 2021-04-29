@@ -5,6 +5,7 @@ const DEFAULT_RECORD_DATA = {
     favorite: '',
     fileCover: '',
     fileName: '',
+    fileBook: '',
 };
 
 const SUCCESS_OPERATION = 'ok';

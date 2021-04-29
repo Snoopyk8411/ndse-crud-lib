@@ -5,12 +5,12 @@ const {
 } = require('./constants');
 const {
     logger,
-    initBooksServer,
+    initBooksService,
 } = require('./utils');
 
 const startServer = (flags, isStylish) => {
     if (isStylish) logger.log(STYLISH_GREETING);
-    initBooksServer(flags, isStylish);
+    initBooksService(flags, isStylish);
 };
 
 const runServerCommand = (command, flags) => {

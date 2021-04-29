@@ -60,6 +60,13 @@ class BooksDatabase {
         this.addDataToRecord(id, bookRecordData);
         return bookRecordData;
     }
+    // ---
+    updateBookRecordFileLink = (bookId, fileName) => {
+        const fileLinkField = {
+            fileBook: fileName,
+        };
+        return this.updateRecord(bookId, fileLinkField);
+    }
 }
 
 const booksDB = new BooksDatabase();

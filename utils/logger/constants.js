@@ -1,18 +1,23 @@
+const { EOL } = require('os');
 const { FILE_ENCODE } = require('../../constants');
+
 const LOG_PATH_FLAG = 'logPath';
 const LOG_FILE_EXT = '.txt';
 const LOG_FILE_ADDON = '__log';
 const LOG_DIR_NAME = 'logs';
 const LOG_DIR_EXISTS = 'Logs directory founded -';
+
 const GIT_IGNORE = '.gitignore';
 const IGNORE_LOG_DIR = `\n# Logs
 logs\n`;
+
 const LOG_PROGRAM_END = '-----';
 const MOVE_TO_ROOT_PATH = ['..', '..'];
 // modes
 const SILENT = 'silent';
 const LOG_MODES = [SILENT];
-// exceptions
+//
+const APP_INTERRUPT = 'SIGINT';
 
 module.exports = {
     LOG_PATH_FLAG,
@@ -27,4 +32,6 @@ module.exports = {
     MOVE_TO_ROOT_PATH,
     SILENT,
     LOG_MODES,
+    EOL,
+    APP_INTERRUPT,
 };

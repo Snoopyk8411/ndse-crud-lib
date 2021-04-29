@@ -105,3 +105,6 @@ dist
 
 # For study purposes
 config.js
+
+# Static
+static/books/*

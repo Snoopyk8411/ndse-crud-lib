@@ -1,20 +1,24 @@
 const {
-    addPluginsTo,
     startListenToPort,
     createServerAppInstance,
 } = require('./utils');
+const {
+    addPluginsTo,
+    addErrorHandlingTo,
+} = require('./middlewares');
 const {
     initAPI,
 } = require('./api');
 const { booksDB } = require('./database');
 
-const initBooksServer = (_, isStylish) => {
+const initBooksService = (_, isStylish) => {
     const { serverApp } = createServerAppInstance();
-    addPluginsTo(serverApp);
-    initAPI(serverApp, booksDB);
+    const { handleFile } = addPluginsTo(serverApp);
+    initAPI({ serverApp, handleFile, booksDB });
+    addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, isStylish);
 };
 
 module.exports = {
-    initBooksServer,
+    initBooksService,
 };

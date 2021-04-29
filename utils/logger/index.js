@@ -8,6 +8,7 @@ const {
     LOG_PROGRAM_END,
     MOVE_TO_ROOT_PATH,
     SILENT,
+    EOL,
 } = require('./constants');
 const {
     parseFlagsToLogString,
@@ -53,7 +54,7 @@ class Logger {
         this.filePath = path.join(this.logsDirName, this.fileName);
         // ---
         const logFlagsString = parseFlagsToLogString(flags);
-        const initTemplate = addTimeStamp(`User command = ${command}, User flags = ${logFlagsString}\n`);
+        const initTemplate = addTimeStamp(`User command = ${command}, User flags = ${logFlagsString}${EOL}`);
         // ---
         this.addToFile(initTemplate);
     }
@@ -68,11 +69,11 @@ class Logger {
         if (mode !== SILENT) {
             console.log(content);
         }
-        const contentTemplate = addTimeStamp(`${content}\n`);
+        const contentTemplate = addTimeStamp(`${content}${EOL}`);
         this.addToFile(contentTemplate);
     }
     logProgramEnd = () => {
-        this.addToFile(`${LOG_PROGRAM_END}\n`, true);
+        this.addToFile(`${LOG_PROGRAM_END}${EOL}`, true);
     }
     addToFile = (content, isSync) => {
         const correctOperation = !fs.existsSync(this.filePath) ? 'write' : 'append';
