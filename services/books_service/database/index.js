@@ -3,6 +3,7 @@ const {
     DEFAULT_RECORD_DATA,
     SUCCESS_OPERATION,
 } = require('./constants');
+const { deleteAttachment } = require('./utils');
 
 class BooksDatabase {
     constructor() {
@@ -42,11 +43,19 @@ class BooksDatabase {
         };
         return this.booksList[bookId];
     }
+    // ---
     deleteRecord = (bookId) => {
+        const { fileBook } = this.booksList[bookId];
+        this.deleteRecordAttachment(fileBook);
         delete this.booksList[bookId];
         return SUCCESS_OPERATION;
     }
-
+    deleteRecordAttachment = (fileBook) => {
+        if (fileBook && fileBook.length !== 0) {
+            deleteAttachment(fileBook);
+        }
+    }
+    // ---
     saveNewBook = (bookData) => {
         const baseTemplate = this.createBookTemplate();
         const { id } = baseTemplate;

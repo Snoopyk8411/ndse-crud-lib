@@ -4,7 +4,7 @@ const UID_PARAM = ':id';
 const UPLOAD = '/upload';
 const DOWNLOAD = '/download';
 // ---
-const BOOK_UPLOAD_FIELD_NAME = 'book-upload';
+const BOOK_UPLOAD_FIELD_NAME = 'fileBook';
 // ---
 const USER_SEG = 'user';
 const BOOK_SEG = 'books';

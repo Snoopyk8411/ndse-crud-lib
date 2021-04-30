@@ -20,7 +20,7 @@ const initAPI = ({ serverApp, handleFile, booksDB }) => {
     const { booksAPIRouter, loginAPIRouter } = initRouters();
     addGetAPI({ booksAPIRouter }, {}, booksDB);
     addPostAPI({ booksAPIRouter, loginAPIRouter }, { handleFile }, booksDB);
-    addPutAPI({ booksAPIRouter }, {}, booksDB);
+    addPutAPI({ booksAPIRouter }, { handleFile }, booksDB);
     addDeleteAPI({ booksAPIRouter }, {}, booksDB);
     mountRoutersToApp(serverApp, { booksAPIRouter, loginAPIRouter });
 };
