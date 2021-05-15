@@ -1,4 +1,7 @@
 # ndse-crud-lib
+### Heroku app url
+https://ndse-crud-lib-ejs.herokuapp.com/
+
 ### Описание
 Данная утилита, создана для реализации домашних заданий по курсу netology-ndse\
 а точнее, для разработки REST API
