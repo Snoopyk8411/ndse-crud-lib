@@ -2,8 +2,8 @@ const {
     TARGET_BOOK_URL,
     TARGET_BOOK_UPLOAD_URL,
     BOOK_UPLOAD_FIELD_NAME,
-} = require('../constants');
-const { handleNotFound } = require('../utils');
+} = require('../../constants');
+const { handleNotFound } = require('../../utils');
 
 const addPutAPI = ({ booksAPIRouter }, { handleFile }, booksDB) => {
     booksAPIRouter.put(TARGET_BOOK_URL, handleFile.single(BOOK_UPLOAD_FIELD_NAME), (req, res) => {

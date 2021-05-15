@@ -1,8 +1,8 @@
 const {
     BOOKS_API_ROUTE,
     LOGIN_API_ROUTE,
-} = require('./constants');
-const { initRouters } = require('./utils');
+} = require('../constants');
+const { initRouter } = require('../utils');
 
 const { addGetAPI } = require('./get');
 const { addPostAPI } = require('./post');
@@ -17,7 +17,8 @@ const mountRoutersToApp = (serverApp, routers) => {
 };
 
 const initAPI = ({ serverApp, handleFile, booksDB }) => {
-    const { booksAPIRouter, loginAPIRouter } = initRouters();
+    const booksAPIRouter = initRouter();
+    const loginAPIRouter = initRouter();
     addGetAPI({ booksAPIRouter }, {}, booksDB);
     addPostAPI({ booksAPIRouter, loginAPIRouter }, { handleFile }, booksDB);
     addPutAPI({ booksAPIRouter }, { handleFile }, booksDB);

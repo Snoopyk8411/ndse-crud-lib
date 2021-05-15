@@ -1,7 +1,7 @@
 const {
     TARGET_BOOK_URL,
-} = require('../constants');
-const { handleNotFound } = require('../utils');
+} = require('../../constants');
+const { handleNotFound } = require('../../utils');
 
 const addDeleteAPI = ({ booksAPIRouter }, {}, booksDB) => {
     booksAPIRouter.delete(TARGET_BOOK_URL, (req, res) => {

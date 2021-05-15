@@ -4,7 +4,7 @@ const {
     NOT_FOUND_CODE,
     NOT_FOUND_MESSAGE,
     ERROR_STACK_MESSAGE,
-} = require('../api/constants');
+} = require('../routes/constants');
 const { logger } = require('../utils');
 const { getLogDataFromReq } = require('./utils');
 

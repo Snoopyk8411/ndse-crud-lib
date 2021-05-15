@@ -2,11 +2,11 @@ const {
     ALL_BOOKS_URL,
     TARGET_BOOK_URL,
     TARGET_BOOK_DOWNLOAD_URL,
-} = require('../constants');
+} = require('../../constants');
 const {
     handleNotFound,
     getFilePath,
-} = require('../utils');
+} = require('../../utils');
 
 const addGetAPI = ({ booksAPIRouter }, {}, booksDB) => {
     booksAPIRouter.get(ALL_BOOKS_URL, (_, res) => {

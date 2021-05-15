@@ -10,7 +10,7 @@ const HEADER_USER_AGENT = 'user-agent';
 const MOVE_TO_ROOT_PATH = ['..', '..'];
 const STATIC_DIR_PATH = 'static';
 const STATIC_BOOKS_DIR_PATH = [STATIC_DIR_PATH, 'books'];
-const PATH_TO_STATIC = path.join(__dirname, ...MOVE_TO_ROOT_PATH, ...STATIC_DIR_PATH);
+const PATH_TO_STATIC = path.join(__dirname, ...MOVE_TO_ROOT_PATH, STATIC_DIR_PATH);
 const PATH_TO_BOOKS_STATIC = path.join(__dirname, ...MOVE_TO_ROOT_PATH, ...STATIC_BOOKS_DIR_PATH);
 
 module.exports = {

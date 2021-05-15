@@ -8,13 +8,8 @@ const {
 } = require('./constants');
 const { logger, SILENT } = require('../utils');
 
-const initRouters = () => {
-    const booksAPIRouter = express.Router();
-    const loginAPIRouter = express.Router();
-    return {
-        booksAPIRouter,
-        loginAPIRouter,
-    };
+const initRouter = () => {
+    return express.Router();
 };
 
 const handleSuccessCreated = (response, createdData) => {
@@ -40,7 +35,7 @@ const getFilePath = (fileName) => {
 module.exports = {
     logger,
     SILENT,
-    initRouters,
+    initRouter,
     handleNotFound,
     handleSuccessCreated,
     getFilePath,

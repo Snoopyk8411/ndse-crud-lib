@@ -1,4 +1,5 @@
 const { PATH_TO_BOOKS_STATIC } = require('../constants');
+const BASE_URL = '/';
 const BASE_PART = '/api/';
 const UID_PARAM = ':id';
 const UPLOAD = '/upload';
@@ -20,8 +21,11 @@ const REQUEST_BODY_MESSAGE = 'Request body:';
 const LOGIN_API_ROUTE = `${BASE_PART}${USER_SEG}`;
 const LOGIN_URL = `/login`;
 
+const SERVICE_CLIENT_ROUTE = BASE_URL;
+
+const ALL_BOOKS_URL = BASE_URL;
 const BOOKS_API_ROUTE = `${BASE_PART}${BOOK_SEG}`;
-const ALL_BOOKS_URL = `/`;
+const BOOKS_CLIENT_ROUTE = `${ALL_BOOKS_URL}${BOOK_SEG}`;
 const TARGET_BOOK_URL = `${ALL_BOOKS_URL}${UID_PARAM}`;
 const TARGET_BOOK_UPLOAD_URL = `${TARGET_BOOK_URL}${UPLOAD}`;
 const TARGET_BOOK_DOWNLOAD_URL = `${TARGET_BOOK_URL}${DOWNLOAD}`;
@@ -32,10 +36,13 @@ const DEFAULT_LOGIN_OBJECT = {
 };
 
 module.exports = {
+    BASE_URL,
     PATH_TO_BOOKS_STATIC,
     LOGIN_API_ROUTE,
     LOGIN_URL,
     BOOKS_API_ROUTE,
+    BOOKS_CLIENT_ROUTE,
+    SERVICE_CLIENT_ROUTE,
     ALL_BOOKS_URL,
     TARGET_BOOK_URL,
     TARGET_BOOK_UPLOAD_URL,

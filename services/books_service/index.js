@@ -8,13 +8,15 @@ const {
 } = require('./middlewares');
 const {
     initAPI,
-} = require('./api');
+    initClient,
+} = require('./routes');
 const { booksDB } = require('./database');
 
 const initBooksService = (_, isStylish) => {
     const { serverApp } = createServerAppInstance();
     const { handleFile } = addPluginsTo(serverApp);
     initAPI({ serverApp, handleFile, booksDB });
+    initClient({ serverApp, booksDB });
     addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, isStylish);
 };
