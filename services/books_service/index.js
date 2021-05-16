@@ -16,7 +16,7 @@ const initBooksService = (_, isStylish) => {
     const { serverApp } = createServerAppInstance();
     const { handleFile } = addPluginsTo(serverApp);
     initAPI({ serverApp, handleFile, booksDB });
-    initClient({ serverApp, booksDB });
+    initClient({ serverApp, handleFile, booksDB });
     addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, isStylish);
 };

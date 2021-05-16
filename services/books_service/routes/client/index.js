@@ -12,11 +12,11 @@ const mountRoutersToApp = (serverApp, routers) => {
     serverApp.use(BOOKS_CLIENT_ROUTE, booksClientRouter);
 };
 
-const initClient = ({ serverApp, booksDB }) => {
+const initClient = ({ serverApp, handleFile, booksDB }) => {
     const booksClientRouter = initRouter();
     const serviceClientRouter = initRouter();
     addServiceRoutes({ serviceClientRouter }, {}, {});
-    addBooksRoutes({ booksClientRouter }, {}, booksDB);
+    addBooksRoutes({ booksClientRouter }, { handleFile }, booksDB);
     mountRoutersToApp(serverApp, { booksClientRouter, serviceClientRouter });
 };
 

@@ -10,7 +10,10 @@
           crossorigin="anonymous"
     >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <% if (stylesLink && stylesLink.length !== 0) { %>
+        <link href="/static/css/<%= stylesLink %>" rel="stylesheet" type="text/css">
+    <% } else { %>
+    <% } %>
     <title><%= title %></title>
 </head>
 <body>

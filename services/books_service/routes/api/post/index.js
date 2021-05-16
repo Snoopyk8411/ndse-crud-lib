@@ -4,7 +4,7 @@ const {
     BOOK_UPLOAD_FIELD_NAME,
     DEFAULT_LOGIN_OBJECT,
 } = require('../../constants');
-const { handleNotFound, handleSuccessCreated } = require('../../utils');
+const { handleSuccessCreated } = require('../../utils');
 
 const addPostAPI = ({ booksAPIRouter, loginAPIRouter }, { handleFile }, booksDB) => {
     loginAPIRouter.post(LOGIN_URL, (_, res) => {

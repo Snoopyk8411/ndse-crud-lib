@@ -1,0 +1,64 @@
+<form method="POST" class="mt-5">
+    <% const { title, authors, description, favorite, fileCover, fileName, fileBook } = book || {}; %>
+    <div class="form-group">
+        <label for="inputTitle">Title</label>
+        <input type="text"
+               value="<%= title %>"
+               name="title"
+               class="form-control"
+               id="inputTitle">
+    </div>
+    <div class="form-group">
+        <label for="inputAuthors">Authors</label>
+        <input type="text"
+               value="<%= authors %>"
+               name="authors"
+               class="form-control"
+               id="inputAuthors">
+    </div>
+    <div class="form-group">
+        <label for="inputDescription">Description</label>
+        <textarea
+                rows="3"
+                name="description"
+                class="form-control"
+                id="inputDescription"
+        ><%= description %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="inputFavorite">Favorite</label>
+        <input type="text"
+               value="<%= favorite %>"
+               name="favorite"
+               class="form-control"
+               id="inputFavorite">
+    </div>
+    <div class="form-group">
+        <label for="inputFileCover">File Cover</label>
+        <input type="text"
+               value="<%= fileCover %>"
+               name="fileCover"
+               class="form-control"
+               id="inputFileCover">
+    </div>
+    <div class="form-group">
+        <label for="inputFileName">File Name</label>
+        <input type="text"
+               value="<%= fileName %>"
+               name="fileName"
+               class="form-control"
+               id="inputFileName">
+    </div>
+    <div class="form-group">
+        <label for="inputFileBook">File Book</label>
+        <input type="file"
+               value="<%= fileBook %>"
+               name="fileBook"
+               class="form-control"
+               id="inputFileBook">
+    </div>
+
+    <div class="form-group text-right ">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+</form>

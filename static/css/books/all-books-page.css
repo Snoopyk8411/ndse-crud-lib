@@ -1,0 +1,25 @@
+.create-button {
+    max-width: 30%;
+    margin: 0 35%;
+}
+
+.table-book-description {
+    max-width: 199px;
+    height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-detail-field {
+    border-bottom: 1px solid #3333;
+}
+
+.book-detail-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-detail-controls {
+    display: inline-block;
+}

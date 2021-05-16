@@ -3,11 +3,12 @@ const {
     DEFAULT_RECORD_DATA,
     SUCCESS_OPERATION,
 } = require('./constants');
+const { booksStartMock } = require('./mocks');
 const { deleteAttachment } = require('./utils');
 
 class BooksDatabase {
     constructor() {
-        this.booksList = {};
+        this.booksList = booksStartMock || {};
     }
     createBookTemplate = () => {
         return {
@@ -15,6 +16,7 @@ class BooksDatabase {
             ...DEFAULT_RECORD_DATA,
         };
     }
+    getEmptyTemplate = () => DEFAULT_RECORD_DATA
 
     isDBEmpty = () => this.booksList.length === 0
     dbHasTargetRecord = (bookId) => !!this.booksList[bookId]

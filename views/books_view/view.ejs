@@ -1,0 +1,34 @@
+<%- include("../templates/header-layout", {title: title, stylesLink: stylesLink}) %>
+<% if (menuData) { %>
+    <%- include("../templates/menu", menuData) %>
+<% } else { %>
+<% } %>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <% const { book } = content || {}; %>
+        <% const { id, title: bookTitle, authors, description, favorite, fileCover, fileName, fileBook, } = book || {}; %>
+        <div class="card card-body">
+            <h5 class="card-title book-detail-title">
+                <span>Current book: <%= bookTitle %></span>
+                <div class="book-detail-controls">
+                    <a class="btn btn-sm btn-primary" href="/books/update/<%= id %>">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <form action="/books/delete/<%= id %>" method="POST" class="d-inline">
+                        <button class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </h5>
+            <div class="book-detail-field">Authors: <p class="card-text"><%= authors %></p></div>
+            <div class="book-detail-field">Description: <p class="card-text"><%= description %></p></div>
+            <div class="book-detail-field">Favorite: <p class="card-text"><%= favorite %></p></div>
+            <div class="book-detail-field">File Cover: <p class="card-text"><%= fileCover %></p></div>
+            <div class="book-detail-field">File Name: <p class="card-text"><%= fileName %></p></div>
+            <div class="book-detail-field">File Book: <p class="card-text"><%= fileBook %></p></div>
+        </div>
+    </div>
+</div>
+
+<%- include("../templates/footer-layout") %>

@@ -18,6 +18,7 @@ const applicablePlugins = {
 const addPluginsTo = (appInstance) => {
     appInstance.set(...VIEW_ENGINE_CONFIG);
     appInstance.use(bodyParser.json(BODY_PARSE_CONFIG));
+    appInstance.use(bodyParser.urlencoded({extended: false}));
     appInstance.use(cors());
     appInstance.use(`/${STATIC_DIR_PATH}`, express.static(PATH_TO_STATIC));
     appInstance.use(loggingRequests);

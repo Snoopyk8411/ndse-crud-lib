@@ -1,0 +1,18 @@
+<%- include("../templates/header-layout", {title: title, stylesLink: stylesLink}) %>
+<% if (menuData) { %>
+    <%- include("../templates/menu", menuData) %>
+<% } else { %>
+<% } %>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <% const { book , formTitle } = content || {}; %>
+        <h5 class="card-title">
+            <span><%= formTitle %></span>
+        </h5>
+        <div class="col-sm-6">
+            <%- include("form", { book }) %>
+        </div>
+    </div>
+</div>
+
+<%- include("../templates/footer-layout") %>
