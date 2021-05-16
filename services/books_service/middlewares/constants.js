@@ -2,7 +2,7 @@ const {
     PATH_TO_BOOKS_STATIC,
 } = require('../constants');
 // ---
-const IMAGE_MIME_TYPES = ['image/png', 'image/jpg', 'image/jpeg'];
+const IMAGE_MIME_TYPES = [];
 const MIME_TYPES_BLACK_LIST = [...IMAGE_MIME_TYPES];
 // ---
 const BODY_PARSE_CONFIG = { limit: '100mb', extended: false };

@@ -8,7 +8,7 @@ const {
 } = require('./constants');
 
 const getMenuData = (activePageId) => {
-    const logoUrl = 'static/logo.png';
+    const logoUrl = '/static/logo.png';
     const alt = 'logo';
     const menu = [
         {

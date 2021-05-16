@@ -18,7 +18,6 @@ const { handleNotFoundRedirect } = require('./utils');
 const { pageTemplateData } = require('./navigation-data');
 
 const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
-    console.log(handleFile);
     // create
     booksClientRouter.get(`${CREATE}`, (req, res) => {
         const bookCreationTemplate = {
@@ -31,10 +30,7 @@ const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
     booksClientRouter.post(CREATE, handleFile.single(BOOK_UPLOAD_FIELD_NAME), (req, res) => {
         const bookData = req.body;
         const { filename: fileBook = '' } = req.file || {};
-        const result = booksDB.saveNewBook({ ...bookData, fileBook });
-        console.log(bookData);
-        console.log(fileBook);
-        console.log(result);
+        booksDB.saveNewBook({ ...bookData, fileBook });
         res.redirect(ALL_BOOKS_REDIRECT);
     });
     // get
