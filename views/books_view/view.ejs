@@ -5,11 +5,12 @@
 <% } %>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <% const { book } = content || {}; %>
+        <% const { book, count } = content || {}; %>
         <% const { id, title: bookTitle, authors, description, favorite, fileCover, fileName, fileBook, } = book || {}; %>
         <div class="card card-body">
             <h5 class="card-title book-detail-title">
                 <span>Current book: <%= bookTitle %></span>
+                <span>watch rate: <%= count %></span>
                 <div class="book-detail-controls">
                     <a class="btn btn-sm btn-primary" href="/books/update/<%= id %>">
                         <i class="fa fa-pencil" aria-hidden="true"></i>

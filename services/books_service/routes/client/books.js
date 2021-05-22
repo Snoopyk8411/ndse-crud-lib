@@ -16,6 +16,7 @@ const {
 } = require('./constants');
 const { handleNotFoundRedirect } = require('./utils');
 const { pageTemplateData } = require('./navigation-data');
+const { getBookWatchCount, updateWatchCount } = require('./counter-plugin');
 
 const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
     // create
@@ -49,13 +50,19 @@ const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
         const dbHasCurrentBook = booksDB.dbHasTargetRecord(id);
     
         if (dbHasCurrentBook) {
-            const viewTemplateData = {
-                ...pageTemplateData[VIEW_BOOK_PAGE],
-                content: {
+            getBookWatchCount(id, (count) => {
+                // ---
+                const viewTemplateData = {
+                    ...pageTemplateData[VIEW_BOOK_PAGE]
+                };
+                viewTemplateData.content = {
+                    ...viewTemplateData.content,
                     book: booksDB.getTargetBook(id),
-                },
-            };
-            res.render(VIEW_BOOK_PAGE, viewTemplateData);
+                    count: count,
+                };
+                res.render(VIEW_BOOK_PAGE, viewTemplateData);
+                updateWatchCount(id);
+            });
         } else {
             handleNotFoundRedirect(res);
         }

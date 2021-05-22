@@ -9,7 +9,7 @@
     "start_service": "node -r dotenv/config index.js server",
     "books_service": "node -r dotenv/config index.js server --service=books",
     "counter_service": "node -r dotenv/config index.js server --service=counter",
-    "all_services": "concurrently --handle-input -r 'npm:books_service' 'npm:books_service'",
+    "all_services": "concurrently --handle-input -r 'npm:books_service' 'npm:counter_service'",
     "dev": "nodemon -r dotenv/config index.js server"
   },
   "repository": {
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Snoopyk8411/ndse-crud-lib#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "concurrently": "^6.1.0",
     "cors": "^2.8.5",
