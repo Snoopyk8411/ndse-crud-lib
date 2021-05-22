@@ -5,12 +5,16 @@ const {
 } = require('./constants');
 const {
     logger,
-    initBooksService,
+    getServiceName,
+    initors,
 } = require('./utils');
+
+const initTargetService = (serviceName, isStylish) => initors[serviceName]({ serviceName, isStylish });
 
 const startServer = (flags, isStylish) => {
     if (isStylish) logger.log(STYLISH_GREETING);
-    initBooksService(flags, isStylish);
+    const serviceName = getServiceName(flags);
+    initTargetService(serviceName, isStylish);
 };
 
 const runServerCommand = (command, flags) => {

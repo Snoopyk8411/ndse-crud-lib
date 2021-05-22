@@ -8,21 +8,19 @@ const {
 } = require('./middlewares');
 const {
     initAPI,
-    initClient,
 } = require('./routes');
-const { booksDB } = require('./database');
-const { BOOKS_SERVICE_NAME } = require('./constants');
+const { counterDB } = require('./database');
+const { COUNTER_SERVICE_NAME } = require('./constants');
 
-const initBooksService = (initData) => {
+const initCounterService = (initData) => {
     const { serverApp } = createServerAppInstance();
-    const { handleFile } = addPluginsTo(serverApp);
-    initAPI({ serverApp, handleFile, booksDB });
-    initClient({ serverApp, handleFile, booksDB });
+    addPluginsTo(serverApp);
+    initAPI({ serverApp, counterDB });
     addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, initData);
 };
 
 module.exports = {
-    BOOKS_SERVICE_NAME,
-    initBooksService,
+    initCounterService,
+    COUNTER_SERVICE_NAME,
 };
