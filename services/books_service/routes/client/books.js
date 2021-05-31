@@ -16,9 +16,8 @@ const {
 } = require('./constants');
 const { handleNotFoundRedirect } = require('./utils');
 const { pageTemplateData } = require('./navigation-data');
-const { getBookWatchCount, updateWatchCount } = require('./counter-plugin');
 
-const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
+const addBooksRoutes = ({ booksClientRouter }, { handleFile, plugins }, booksDB) => {
     // create
     booksClientRouter.get(`${CREATE}`, (req, res) => {
         const bookCreationTemplate = {
@@ -50,19 +49,27 @@ const addBooksRoutes = ({ booksClientRouter }, { handleFile }, booksDB) => {
         const dbHasCurrentBook = booksDB.dbHasTargetRecord(id);
     
         if (dbHasCurrentBook) {
-            getBookWatchCount(id, (count) => {
-                // ---
-                const viewTemplateData = {
-                    ...pageTemplateData[VIEW_BOOK_PAGE]
-                };
-                viewTemplateData.content = {
-                    ...viewTemplateData.content,
-                    book: booksDB.getTargetBook(id),
-                    count: count,
-                };
-                res.render(VIEW_BOOK_PAGE, viewTemplateData);
-                updateWatchCount(id);
-            });
+            const { getRequestUrl, injectServiceHost, counterPlugin } = plugins;
+            const counterServiceName = counterPlugin.getServiceName();
+            injectServiceHost(
+                getRequestUrl(req),
+                counterServiceName,
+                counterPlugin.getCounter)
+                .then((counter) => {
+                    counter.getBookWatchCount(id, (count) => {
+                        // ---
+                        const viewTemplateData = {
+                            ...pageTemplateData[VIEW_BOOK_PAGE]
+                        };
+                        viewTemplateData.content = {
+                            ...viewTemplateData.content,
+                            book: booksDB.getTargetBook(id),
+                            count: count,
+                        };
+                        res.render(VIEW_BOOK_PAGE, viewTemplateData);
+                        counter.updateWatchCount(id);
+                    });
+                });
         } else {
             handleNotFoundRedirect(res);
         }

@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r dotenv/config index.js server",
+    "start": "node -r dotenv/config index.js server --service=ms_broker --runServices='books_service','counter_service'",
     "start_service": "node -r dotenv/config index.js server",
     "books_service": "node -r dotenv/config index.js server --service=books",
     "counter_service": "node -r dotenv/config index.js server --service=counter",
-    "all_services": "concurrently --handle-input -r 'npm:books_service' 'npm:counter_service'",
+    "ms_broker_service": "node -r dotenv/config index.js server --service=ms_broker",
+    "all_services": "node -r dotenv/config index.js server --service=ms_broker --runServices='books_service','counter_service'",
     "dev": "nodemon -r dotenv/config index.js server"
   },
   "repository": {
@@ -28,7 +29,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
-    "concurrently": "^6.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",

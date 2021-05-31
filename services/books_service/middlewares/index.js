@@ -9,24 +9,24 @@ const {
 // ---
 const { addErrorHandlingTo, serverErrorFallback } = require('./error_mw');
 const { loggingRequests } = require('./logger_mw');
-// applicable plugins - used on places
+// applicable middlewares - used on places
 const { handleFile } = require('./file_mw');
-const applicablePlugins = {
+const applicableMiddlewares = {
     handleFile,
 };
 
-const addPluginsTo = (appInstance) => {
+const addMiddlewaresTo = (appInstance) => {
     appInstance.set(...VIEW_ENGINE_CONFIG);
     appInstance.use(bodyParser.json(BODY_PARSE_CONFIG));
-    appInstance.use(bodyParser.urlencoded({extended: false}));
+    appInstance.use(bodyParser.urlencoded({ extended: false }));
     appInstance.use(cors());
     appInstance.use(`/${STATIC_DIR_PATH}`, express.static(PATH_TO_STATIC));
     appInstance.use(loggingRequests);
     appInstance.use(serverErrorFallback);
-    return applicablePlugins;
+    return applicableMiddlewares;
 };
 
 module.exports = {
-    addPluginsTo,
+    addMiddlewaresTo,
     addErrorHandlingTo,
 };

@@ -4,6 +4,7 @@ const { logger, SILENT } = require('../utils/logger');
 const {
     SERVER_PORT,
     PORT_STEP,
+    BROKER_PATTERN,
     ERROR,
     ERROR_CODE_PORT_BUSY,
     SUCCESS_START_MES,
@@ -40,6 +41,7 @@ const startListenToPort = (serverApp, initData, customPort) => {
         const [serviceMessage, portMessage] = getSuccessMessage(isStylish);
         logger.log(`${serviceMessage} ${serviceName}`);
         logger.log(`${portMessage} ${port}`);
+        logger.log(`${BROKER_PATTERN}${port}`);
     }).on(ERROR, (error) => handleListenStartError({ serverApp, initData, error }));
 };
 
@@ -53,4 +55,5 @@ module.exports = {
     SILENT,
     startListenToPort,
     createServerAppInstance,
+    SERVER_PORT,
 };

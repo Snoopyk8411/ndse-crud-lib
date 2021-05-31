@@ -9,12 +9,13 @@ const {
     initors,
 } = require('./utils');
 
-const initTargetService = (serviceName, isStylish) => initors[serviceName]({ serviceName, isStylish });
+const initTargetService = (serviceName, isStylish, flags) =>
+    initors[serviceName] && initors[serviceName]({ serviceName, isStylish, flags });
 
 const startServer = (flags, isStylish) => {
     if (isStylish) logger.log(STYLISH_GREETING);
     const serviceName = getServiceName(flags);
-    initTargetService(serviceName, isStylish);
+    initTargetService(serviceName, isStylish, flags);
 };
 
 const runServerCommand = (command, flags) => {

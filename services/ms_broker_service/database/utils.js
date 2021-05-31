@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const {
-    PATH_TO_COUNTER_STATIC,
+    PATH_TO_MS_BROKER_STATIC,
 } = require('../constants');
-const { COUNTER_DATA_FILENAME } = require('./constants');
+const { MS_BROKER_DATA_FILENAME } = require('./constants');
 const { logger } = require('../utils');
 
-const DB_FILENAME = path.join(PATH_TO_COUNTER_STATIC, COUNTER_DATA_FILENAME);
+const DB_FILENAME = path.join(PATH_TO_MS_BROKER_STATIC, MS_BROKER_DATA_FILENAME);
 // ---
 const dataStringify = (data) => JSON.stringify(data, null, 2);
 // ---

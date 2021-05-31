@@ -3,7 +3,7 @@ const {
     createServerAppInstance,
 } = require('../utils');
 const {
-    addPluginsTo,
+    addMiddlewaresTo,
     addErrorHandlingTo,
 } = require('./middlewares');
 const {
@@ -14,7 +14,7 @@ const { COUNTER_SERVICE_NAME } = require('./constants');
 
 const initCounterService = (initData) => {
     const { serverApp } = createServerAppInstance();
-    addPluginsTo(serverApp);
+    addMiddlewaresTo(serverApp);
     initAPI({ serverApp, counterDB });
     addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, initData);

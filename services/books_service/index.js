@@ -3,9 +3,10 @@ const {
     createServerAppInstance,
 } = require('../utils');
 const {
-    addPluginsTo,
+    addMiddlewaresTo,
     addErrorHandlingTo,
 } = require('./middlewares');
+const { plugins } = require('./plugins');
 const {
     initAPI,
     initClient,
@@ -15,9 +16,9 @@ const { BOOKS_SERVICE_NAME } = require('./constants');
 
 const initBooksService = (initData) => {
     const { serverApp } = createServerAppInstance();
-    const { handleFile } = addPluginsTo(serverApp);
+    const { handleFile } = addMiddlewaresTo(serverApp);
     initAPI({ serverApp, handleFile, booksDB });
-    initClient({ serverApp, handleFile, booksDB });
+    initClient({ serverApp, handleFile, booksDB, plugins });
     addErrorHandlingTo(serverApp);
     startListenToPort(serverApp, initData);
 };

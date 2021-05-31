@@ -1,5 +1,6 @@
 const SERVER_PORT = process.env.PORT || 3000;
 const PORT_STEP = 10;
+const BROKER_PATTERN = '[Broker_data]:';
 // errors
 const ERROR = 'error';
 const ERROR_CODE_PORT_BUSY = 'EADDRINUSE';
@@ -16,6 +17,7 @@ const STATIC_DIR_PATH = 'static';
 module.exports = {
     SERVER_PORT,
     PORT_STEP,
+    BROKER_PATTERN,
     ERROR,
     ERROR_CODE_PORT_BUSY,
     SUCCESS_START_MES,

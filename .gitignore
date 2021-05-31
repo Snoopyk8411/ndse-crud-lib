@@ -108,3 +108,5 @@ config.js
 
 # Static
 static/books/*
+static/ms_broker/*
+static/counter/*

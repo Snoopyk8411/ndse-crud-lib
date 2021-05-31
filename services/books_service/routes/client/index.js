@@ -5,6 +5,7 @@ const {
 const { initRouter } = require('../utils');
 const { addBooksRoutes } = require('./books');
 const { addServiceRoutes } = require('./service');
+const { } = require('../')
 
 const mountRoutersToApp = (serverApp, routers) => {
     const { booksClientRouter, serviceClientRouter } = routers;
@@ -12,11 +13,11 @@ const mountRoutersToApp = (serverApp, routers) => {
     serverApp.use(BOOKS_CLIENT_ROUTE, booksClientRouter);
 };
 
-const initClient = ({ serverApp, handleFile, booksDB }) => {
+const initClient = ({ serverApp, handleFile, booksDB, plugins }) => {
     const booksClientRouter = initRouter();
     const serviceClientRouter = initRouter();
     addServiceRoutes({ serviceClientRouter }, {}, {});
-    addBooksRoutes({ booksClientRouter }, { handleFile }, booksDB);
+    addBooksRoutes({ booksClientRouter }, { handleFile, plugins }, booksDB);
     mountRoutersToApp(serverApp, { booksClientRouter, serviceClientRouter });
 };
 
