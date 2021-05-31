@@ -1,4 +1,11 @@
 const axios = require('axios');
+axios.interceptors.response.use(null, error => {
+    if (error && error.message === 'Network Error') {
+      throw new Error(`Potential network CORS preflight error at ${error.config.url}`);
+    }
+    throw error;
+});
+// ---
 const { MS_BROKER_CALL_URL, TECH_PORT, SERVER_PORT } = require('./constants');
 const { logger } = require('../utils');
 
