@@ -103,3 +103,24 @@ https://ndse-crud-lib-ejs.herokuapp.com/
   [id]: "number"
 }
 ``` 
+
+### Запросы к MongoDB
+```javascript
+запрос для вставки данных минимум о двух книгах в коллекцию books
+db.books.insertMany([
+{ title: "title1", description: "desc1", authors: "authors1" },
+{ title: "title2", description: "desc2", authors: "authors2" }
+])
+
+запрос для поиска полей документов коллекции books по полю title
+db.books.find(
+{ title: "title1" },
+{ title: 1, description: 1, authors: 1 }
+)
+
+запрос для редактирования полей: description и authors коллекции books по _id записи
+db.books.updateOne(
+{ _id: "id1"},
+{ $set: { authors: "authors1", description: "description1" } }
+)
+```
